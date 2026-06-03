@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPY 12-Month Pattern Report</title>
+  <meta name="description" content="Plain-English SPY intraday pattern research report with charts.">
+  <style>
+    :root {
+      --bg: #f7f8fa;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9dee7;
+      --accent: #14532d;
+      --accent-soft: #e9f7ef;
+      --warning: #8a4b00;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 18px 64px;
+    }
+    article {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 46px);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+    }
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 42px 0 14px;
+      font-size: clamp(22px, 3vw, 31px);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 34px 0 10px;
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+    p, li { font-size: 17px; }
+    p { margin: 12px 0; }
+    ul, ol { padding-left: 24px; }
+    strong { color: var(--accent); }
+    code {
+      background: #eef2f7;
+      border: 1px solid #d8e0ea;
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-size: 0.92em;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 18px 0 22px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      font-size: 15px;
+    }
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f2f5f9;
+      font-weight: 700;
+    }
+    tr:last-child td { border-bottom: 0; }
+    figure {
+      margin: 18px 0 34px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .top-note {
+      margin: 0 0 22px;
+      padding: 14px 16px;
+      border: 1px solid #b7e2c5;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: #174d2b;
+      font-size: 16px;
+    }
+    .footer-note {
+      margin-top: 42px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 760px) {
+      article { padding: 22px 16px; }
+      p, li { font-size: 16px; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article>
+      <div class="top-note">Prepared as a plain-English research summary. This is not investment advice.</div>
+      <h1>SPY 12-Month Pattern Report</h1>
+<p>Data source: Alpaca SIP 1-minute SPY bars from 2025-06-03 through 2026-06-03.</p>
+<p>Plain-English version: we looked at every regular market day for the last 12 months and asked, &quot;Are there certain times or calendar situations where SPY tended to move up or down more often than normal?&quot;</p>
+<p>The numbers are small because these are short time windows. <code>1 bp</code> means one basis point, or 0.01%. So <code>+2 bps</code> means roughly <code>+0.02%</code> before trading costs.</p>
+<p>This is research, not a trading recommendation.</p>
+<h2>Executive Takeaway</h2>
+<p>The best pattern found is simple:</p>
+<p><strong>SPY tended to rise between 13:20 and 13:30 New York time.</strong></p>
+<p>It did not happen every day. But over the last 12 months, that 10-minute window was positive about 59% of the time and was positive in 12 of the 13 calendar months in the sample.</p>
+<p>The other patterns are interesting, but less clean.</p>
+<h2>Best Patterns</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Pattern</th>
+<th>Times Tested</th>
+<th>Avg Move</th>
+<th>Win Rate</th>
+<th>Strength</th>
+</tr></thead><tbody>
+<tr>
+<td>13:20-13:30 up move</td>
+<td>252</td>
+<td>+1.4411 bps</td>
+<td>59.1%</td>
+<td>Strongest clean long pattern</td>
+</tr>
+<tr>
+<td>Tuesday midday up move</td>
+<td>954</td>
+<td>+0.7312 bps</td>
+<td>53.4%</td>
+<td>Interesting, less consistent</td>
+</tr>
+<tr>
+<td>Calendar day 14 up move</td>
+<td>273</td>
+<td>+1.4016 bps</td>
+<td>57.9%</td>
+<td>Interesting calendar pattern</td>
+</tr>
+<tr>
+<td>First trading day midday up move</td>
+<td>234</td>
+<td>+1.0987 bps</td>
+<td>57.7%</td>
+<td>Interesting turn-of-month pattern</td>
+</tr>
+<tr>
+<td>15:20-15:30 down move</td>
+<td>252</td>
+<td>-1.0906 bps</td>
+<td>41.3%</td>
+<td>Useful short-bias clue</td>
+</tr>
+<tr>
+<td>15:20-15:25 down move</td>
+<td>252</td>
+<td>-0.7769 bps</td>
+<td>43.3%</td>
+<td>Narrow short-bias clue</td>
+</tr>
+<tr>
+<td>10:45-10:50 down move</td>
+<td>252</td>
+<td>-1.5284 bps</td>
+<td>41.3%</td>
+<td>Strongest short-bias clue</td>
+</tr>
+</tbody></table></div>
+<p>How to read this:</p>
+<ul>
+<li><code>Times Tested</code> means how many matching examples were found in the year.</li>
+<li><code>Avg Move</code> means the average move during that exact window.</li>
+<li><code>Win Rate</code> means how often the window moved in the expected direction.</li>
+<li><code>Strength</code> is my plain-English read of the pattern, not a guarantee.</li>
+</ul>
+<h2>Charts</h2>
+<h3>10-Minute Intraday Profile</h3>
+<p>This chart asks: &quot;At each 10-minute time slot, did SPY usually move up or down?&quot;</p>
+<p>The bar ending at <code>13:30</code> stands out on the positive side. The bar ending at <code>15:30</code> stands out on the negative side.</p>
+<figure><img src="charts/spy_sip_10m_profile.svg" alt="10-minute profile" loading="lazy"></figure>
+<h3>5-Minute Intraday Profile</h3>
+<p>This zooms in closer. It helps answer whether the move is broad or concentrated in a smaller slice of time.</p>
+<p>The <code>13:30</code> positive pattern still appears. The <code>10:50</code> and <code>15:25</code> windows show down-side pressure.</p>
+<figure><img src="charts/spy_sip_5m_profile.svg" alt="5-minute profile" loading="lazy"></figure>
+<h3>Candidate Train/Test Means</h3>
+<p>This chart checks whether a pattern worked in both the earlier part of the year and the later part of the year.</p>
+<p>That matters because a pattern that only worked in the past, then disappeared later, is much less useful.</p>
+<figure><img src="charts/spy_sip_candidate_train_test.svg" alt="train test means" loading="lazy"></figure>
+<h3>13:30 Monthly Consistency</h3>
+<p>This is the most important chart.</p>
+<p>It shows the 13:20-13:30 window month by month. The pattern was positive in 12 of 13 months, which makes it more interesting than a one-off lucky average.</p>
+<figure><img src="charts/spy_sip_1330_monthly.svg" alt="13:30 monthly" loading="lazy"></figure>
+<h3>Cumulative Candidate Paths</h3>
+<p>This shows how each pattern built up over time.</p>
+<p>We want to avoid patterns that only look good because of one or two lucky days. A steadier line is more interesting for further research.</p>
+<figure><img src="charts/spy_sip_candidate_cumulative.svg" alt="cumulative candidates" loading="lazy"></figure>
+<h3>Day/Time Heatmap</h3>
+<p>This is a quick map of weekday plus time of day.</p>
+<p>Green areas mean that time/day combination tended to be positive. Red areas mean it tended to be negative.</p>
+<figure><img src="charts/spy_sip_dow_time_heatmap.svg" alt="weekday heatmap" loading="lazy"></figure>
+<h2>What This Means In Business Terms</h2>
+<p>The best current lead is:</p>
+<p><strong>If we were going to study one time-based SPY pattern further, it should be the 13:20-13:30 long window.</strong></p>
+<p>The short-side windows are worth watching too, especially <code>10:45-10:50</code>, but they are not as clean as the 13:30 long pattern.</p>
+<p>The main caution: these are small moves. A business-minded way to think about it is margin. If the average gross edge is about 1-2 bps, then trading costs, spread, execution quality, and discipline matter a lot. A pattern can be real in the data but still not be profitable after friction.</p>
+<h2>Next Decision</h2>
+<p>The next useful step is not more theory. It is a practical viability test:</p>
+<ol>
+<li>1. Estimate realistic entry/exit costs.</li>
+<li>2. Test the 13:20-13:30 idea month by month.</li>
+<li>3. Compare SPY against another instrument like ES futures or QQQ.</li>
+<li>4. Build a simple paper-trading tracker before risking capital.</li>
+</ol>
+      <div class="footer-note">Generated from local Alpaca SIP data and static SVG charts. Raw API keys and raw CSV data are not included in this share package.</div>
+    </article>
+  </main>
+</body>
+</html>

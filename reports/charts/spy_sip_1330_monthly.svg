@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="420" viewBox="0 0 1000 420">
+<rect width="1000" height="420" fill="#ffffff"/>
+<text x="28" y="38" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2937">13:20-13:30 Monthly Mean Return</text>
+<text x="28" y="62" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">Average basis points for the 13:20-13:30 10-minute window by month.</text>
+<line x1="66" y1="356.0" x2="972" y2="356.0" stroke="#e5e7eb"/>
+<text x="12" y="360.0" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">-3.34</text>
+<line x1="66" y1="288.5" x2="972" y2="288.5" stroke="#e5e7eb"/>
+<text x="12" y="292.5" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">-1.67</text>
+<line x1="66" y1="221.0" x2="972" y2="221.0" stroke="#9ca3af"/>
+<line x1="66" y1="153.5" x2="972" y2="153.5" stroke="#e5e7eb"/>
+<text x="12" y="157.5" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">1.67</text>
+<line x1="66" y1="86.0" x2="972" y2="86.0" stroke="#e5e7eb"/>
+<text x="12" y="90.0" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">3.34</text>
+<text x="12" y="74" font-family="Arial, sans-serif" font-size="11" fill="#6b7280">bps</text>
+<rect x="75.8" y="221.0" width="50.2" height="5.4" fill="#b42318" opacity="0.86"/>
+<text x="100.8" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 100.8,392)">2025-06</text>
+<rect x="145.4" y="216.8" width="50.2" height="4.2" fill="#117a52" opacity="0.86"/>
+<text x="170.5" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 170.5,392)">2025-07</text>
+<rect x="215.1" y="103.6" width="50.2" height="117.4" fill="#117a52" opacity="0.86"/>
+<text x="240.2" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 240.2,392)">2025-08</text>
+<rect x="284.8" y="218.2" width="50.2" height="2.8" fill="#117a52" opacity="0.86"/>
+<text x="309.9" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 309.9,392)">2025-09</text>
+<rect x="354.5" y="146.0" width="50.2" height="75.0" fill="#117a52" opacity="0.86"/>
+<text x="379.6" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 379.6,392)">2025-10</text>
+<rect x="424.2" y="145.9" width="50.2" height="75.1" fill="#117a52" opacity="0.86"/>
+<text x="449.3" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 449.3,392)">2025-11</text>
+<rect x="493.9" y="197.4" width="50.2" height="23.6" fill="#117a52" opacity="0.86"/>
+<text x="519.0" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 519.0,392)">2025-12</text>
+<rect x="563.6" y="137.5" width="50.2" height="83.5" fill="#117a52" opacity="0.86"/>
+<text x="588.7" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 588.7,392)">2026-01</text>
+<rect x="633.3" y="155.7" width="50.2" height="65.3" fill="#117a52" opacity="0.86"/>
+<text x="658.4" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 658.4,392)">2026-02</text>
+<rect x="703.0" y="180.9" width="50.2" height="40.1" fill="#117a52" opacity="0.86"/>
+<text x="728.1" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 728.1,392)">2026-03</text>
+<rect x="772.7" y="137.1" width="50.2" height="83.9" fill="#117a52" opacity="0.86"/>
+<text x="797.8" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 797.8,392)">2026-04</text>
+<rect x="842.4" y="86.0" width="50.2" height="135.0" fill="#117a52" opacity="0.86"/>
+<text x="867.5" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 867.5,392)">2026-05</text>
+<rect x="912.1" y="137.4" width="50.2" height="83.6" fill="#117a52" opacity="0.86"/>
+<text x="937.2" y="392" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#6b7280" transform="rotate(-45 937.2,392)">2026-06</text>
+</svg>

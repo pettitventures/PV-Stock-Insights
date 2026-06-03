@@ -1,0 +1,2 @@
+rule,train_n,train_mean_bps,train_hit_rate,train_t,test_n,test_mean_bps,test_hit_rate,test_t,test_lift_vs_baseline_bps,test_total_bps
+dow=Fri + hour=15:00,128,-1.224685,0.4297,-1.9041,68,-1.693975,0.4412,-1.3824,-1.965406,-115.1903

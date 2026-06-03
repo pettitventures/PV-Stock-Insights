@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="430" viewBox="0 0 1120 430">
+<rect width="1120" height="430" fill="#ffffff"/>
+<text x="28" y="38" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#1f2937">Candidate Train/Test Means</text>
+<text x="28" y="62" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">Mean return in basis points per matching bar. Blue is train, amber is out-of-sample test.</text>
+<line x1="665.0" y1="74" x2="665.0" y2="392" stroke="#9ca3af"/>
+<text x="28" y="106" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">13:20-13:30 long</text>
+<rect x="665.0" y="88.0" width="221.7" height="12" fill="#2563eb" opacity="0.88"/>
+<text x="891.7" y="98.0" font-family="Arial, sans-serif" font-size="10" text-anchor="start" fill="#6b7280">train 1.10</text>
+<rect x="665.0" y="105.0" width="415.0" height="12" fill="#b7791f" opacity="0.88"/>
+<text x="1085.0" y="115.0" font-family="Arial, sans-serif" font-size="10" text-anchor="start" fill="#6b7280">test 2.06</text>
+<text x="28" y="148" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Tuesday midday long</text>
+<rect x="665.0" y="130.0" width="100.2" height="12" fill="#2563eb" opacity="0.88"/>
+<text x="770.2" y="140.0" font-family="Arial, sans-serif" font-size="10" text-anchor="start" fill="#6b7280">train 0.50</text>
+<rect x="665.0" y="147.0" width="231.1" height="12" fill="#b7791f" opacity="0.88"/>
+<text x="901.1" y="157.0" font-family="Arial, sans-serif" font-size="10" text-anchor="start" fill="#6b7280">test 1.15</text>
+<text x="28" y="190" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">Day 14 long</text>
+<rect x="665.0" y="172.0" width="247.4" height="12" fill="#2563eb" opacity="0.88"/>
+<text x="917.4" y="182.0" font-family="Arial, sans-serif" font-size="10" text-anchor="start" fill="#6b7280">train 1.23</text>
+<rect x="665.0" y="189.0" width="368.6" height="12" fill="#b7791f" opacity="0.88"/>
+<text x="1038.6" y="199.0" font-family="Arial, sans-serif" font-size="10" text-anchor="start" fill="#6b7280">test 1.83</text>
+<text x="28" y="232" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">First trading day midday</text>
+<rect x="665.0" y="214.0" width="191.0" height="12" fill="#2563eb" opacity="0.88"/>
+<text x="861.0" y="224.0" font-family="Arial, sans-serif" font-size="10" text-anchor="start" fill="#6b7280">train 0.95</text>
+<rect x="665.0" y="231.0" width="269.2" height="12" fill="#b7791f" opacity="0.88"/>
+<text x="939.2" y="241.0" font-family="Arial, sans-serif" font-size="10" text-anchor="start" fill="#6b7280">test 1.34</text>
+<text x="28" y="274" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">15:20-15:30 short</text>
+<rect x="446.0" y="256.0" width="219.0" height="12" fill="#2563eb" opacity="0.88"/>
+<text x="441.0" y="266.0" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#6b7280">train -1.09</text>
+<rect x="444.8" y="273.0" width="220.2" height="12" fill="#b7791f" opacity="0.88"/>
+<text x="439.8" y="283.0" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#6b7280">test -1.09</text>
+<text x="28" y="316" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">15:20-15:25 short</text>
+<rect x="561.3" y="298.0" width="103.7" height="12" fill="#2563eb" opacity="0.88"/>
+<text x="556.3" y="308.0" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#6b7280">train -0.52</text>
+<rect x="412.4" y="315.0" width="252.6" height="12" fill="#b7791f" opacity="0.88"/>
+<text x="407.4" y="325.0" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#6b7280">test -1.26</text>
+<text x="28" y="358" font-family="Arial, sans-serif" font-size="13" fill="#1f2937">10:45-10:50 short</text>
+<rect x="336.0" y="340.0" width="329.0" height="12" fill="#2563eb" opacity="0.88"/>
+<text x="331.0" y="350.0" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#6b7280">train -1.64</text>
+<rect x="396.8" y="357.0" width="268.2" height="12" fill="#b7791f" opacity="0.88"/>
+<text x="391.8" y="367.0" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#6b7280">test -1.33</text>
+</svg>
