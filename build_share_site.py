@@ -590,6 +590,8 @@ def write_page(filename: str, title: str, body: str) -> None:
 def main() -> int:
     if not REPORT.exists():
         raise FileNotFoundError(REPORT)
+    if OUT.exists():
+        shutil.rmtree(OUT)
     OUT.mkdir(parents=True, exist_ok=True)
     copy_charts()
 

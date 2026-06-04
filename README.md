@@ -101,6 +101,7 @@ Build a colleague-friendly static HTML package:
 
 ```bash
 python3 build_share_site.py
+python3 verify_static_site.py
 ```
 
 The publishable folder is `share/`. It includes the HTML report and chart SVGs only; it does not include `.env` files or raw CSV data.
@@ -116,8 +117,10 @@ Generated pages:
 Cloudflare Pages setup:
 
 - Connect the GitHub repository to Cloudflare Pages.
-- Build command: leave blank, or use `python3 build_share_site.py` if you want Cloudflare to rebuild it.
+- Build command: `python3 build_share_site.py`
 - Output directory: `share`.
+
+This is intentionally a static-only project for now. See `STATIC_ONLY.md` for the data and deployment policy.
 
 Outputs are written to `reports/`:
 
