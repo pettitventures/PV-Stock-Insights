@@ -261,8 +261,8 @@
       <a class="brand" href="index.html">PV Stock Insights</a>
       <nav class="nav" aria-label="Site navigation">
         <a href="index.html">Overview</a>
-<a href="report.html" class="active">Main Report</a>
-<a href="1320-1330.html">13:20 Deep Dive</a>
+<a href="report.html" class="active">Expanded Report</a>
+<a href="tuesday-1340.html">Tuesday Deep Dive</a>
 <a href="charts.html">Charts</a>
 <a href="methodology.html">Methodology</a>
       </nav>
@@ -271,121 +271,160 @@
   <main>
     <section class="page">
       <div class="note">Prepared as a plain-English research summary. This is not investment advice.</div>
-      <h1>SPY 12-Month Pattern Report</h1>
-<p>Data source: Alpaca SIP 1-minute SPY bars from 2025-06-03 through 2026-06-03.</p>
-<p>Plain-English version: we looked at every regular market day for the last 12 months and asked, &quot;Are there certain times or calendar situations where SPY tended to move up or down more often than normal?&quot;</p>
-<p>The numbers are small because these are short time windows. <code>1 bp</code> means one basis point, or 0.01%. So <code>+2 bps</code> means roughly <code>+0.02%</code> before trading costs.</p>
-<p>This is research, not a trading recommendation.</p>
+      <h1>SPY Expanded Pattern Report: 2021-2026</h1>
+<p>Data source: Alpaca SIP consolidated 1-minute SPY bars. Regular-session analysis window: 2021-01-04 through 2026-06-03.</p>
+<p>Plain-English update: adding the 2021-2026 history changes the lead pattern. The original 13:20-13:30 window is still interesting, but the stronger multi-year timing lead is more specific:</p>
+<p><strong>Tuesday 13:30-13:40 New York time showed the cleanest intraday long behavior in the expanded sample.</strong></p>
+<p>This is research, not investment advice.</p>
 <h2>Executive Takeaway</h2>
-<p>The best pattern found is simple:</p>
-<p><strong>SPY tended to rise between 13:20 and 13:30 New York time.</strong></p>
-<p>It did not happen every day. But over the last 12 months, that 10-minute window was positive about 59% of the time and was positive in 12 of the 13 calendar months in the sample.</p>
-<p>There is now a standalone deep dive for this specific pattern: <a href="1320-1330.html">13:20-13:30 deep dive</a>.</p>
-<p>The other patterns are interesting, but less clean.</p>
-<h2>Best Patterns</h2>
+<p>The old 12-month report pointed at 13:20-13:30 as the best daily window. With more than five years of data, that exact daily window becomes less dominant. The broader 13:30 area still matters, but the stronger version is Tuesday-specific and ends at 13:40.</p>
+<p>The practical read:</p>
+<ul>
+<li>Do not throw away the 13:30 idea.</li>
+<li>Refine it: study Tuesday 13:30-13:40 first.</li>
+<li>Treat March 14:00-hour behavior as a separate seasonal hypothesis.</li>
+<li>Treat all calendar-specific findings as hypotheses, because more combinations create more chances for accidental patterns.</li>
+</ul>
+<h2>Best Expanded-History Patterns</h2>
 <div class="table-wrap"><table>
 <thead><tr>
 <th>Pattern</th>
-<th>Times Tested</th>
-<th>Avg Move</th>
-<th>Win Rate</th>
-<th>Strength</th>
+<th>Full Avg</th>
+<th>Full Win</th>
+<th>Train Avg</th>
+<th>Test Avg</th>
+<th>Test Win</th>
+<th>Test Days</th>
+<th>Read</th>
 </tr></thead><tbody>
 <tr>
-<td>13:20-13:30 up move</td>
-<td>252</td>
-<td>+1.4411 bps</td>
-<td>59.1%</td>
-<td>Strongest clean long pattern</td>
+<td>Tuesday 13:30-13:40 up move</td>
+<td>+2.0536 bps</td>
+<td>60.6%</td>
+<td>+1.5254 bps</td>
+<td>+3.0301 bps</td>
+<td>60.6%</td>
+<td>99</td>
+<td>Best simple intraday lead</td>
 </tr>
 <tr>
-<td>Tuesday midday up move</td>
-<td>954</td>
-<td>+0.7312 bps</td>
-<td>53.4%</td>
-<td>Interesting, less consistent</td>
+<td>Daily 13:20-13:30 up move</td>
+<td>+0.4480 bps</td>
+<td>54.5%</td>
+<td>+0.3495 bps</td>
+<td>+0.6308 bps</td>
+<td>52.5%</td>
+<td>476</td>
+<td>Weaker alone, but part of the 13:30 zone</td>
 </tr>
 <tr>
-<td>Calendar day 14 up move</td>
-<td>273</td>
-<td>+1.4016 bps</td>
-<td>57.9%</td>
-<td>Interesting calendar pattern</td>
+<td>Daily 13:20-13:40 zone</td>
+<td>+0.5589 bps</td>
+<td>53.6%</td>
+<td>+0.4085 bps</td>
+<td>+0.8382 bps</td>
+<td>52.9%</td>
+<td>952</td>
+<td>Broad 13:30-area support</td>
 </tr>
 <tr>
-<td>First trading day midday up move</td>
-<td>234</td>
-<td>+1.0987 bps</td>
-<td>57.7%</td>
-<td>Interesting turn-of-month pattern</td>
+<td>March 14:00 hour up move</td>
+<td>+1.4140 bps</td>
+<td>55.8%</td>
+<td>+1.0512 bps</td>
+<td>+2.1649 bps</td>
+<td>57.8%</td>
+<td>258</td>
+<td>Strong seasonal/calendar hypothesis</td>
 </tr>
 <tr>
-<td>15:20-15:30 down move</td>
-<td>252</td>
-<td>-1.0906 bps</td>
-<td>41.3%</td>
-<td>Useful short-bias clue</td>
+<td>3rd day 15:00 hour down move</td>
+<td>-2.1421 bps</td>
+<td>43.8%</td>
+<td>-1.8543 bps</td>
+<td>-2.6631 bps</td>
+<td>43.2%</td>
+<td>95</td>
+<td>Calendar short-bias hypothesis</td>
 </tr>
 <tr>
-<td>15:20-15:25 down move</td>
-<td>252</td>
-<td>-0.7769 bps</td>
-<td>43.3%</td>
-<td>Narrow short-bias clue</td>
-</tr>
-<tr>
-<td>10:45-10:50 down move</td>
-<td>252</td>
-<td>-1.5284 bps</td>
-<td>41.3%</td>
-<td>Strongest short-bias clue</td>
+<td>Thursday 10:05-10:10 down move</td>
+<td>-1.7058 bps</td>
+<td>43.8%</td>
+<td>-1.2273 bps</td>
+<td>-2.6269 bps</td>
+<td>43.0%</td>
+<td>93</td>
+<td>Best 5-minute short-bias lead</td>
 </tr>
 </tbody></table></div>
-<p>How to read this:</p>
-<ul>
-<li><code>Times Tested</code> means how many matching examples were found in the year.</li>
-<li><code>Avg Move</code> means the average move during that exact window.</li>
-<li><code>Win Rate</code> means how often the window moved in the expected direction.</li>
-<li><code>Strength</code> is my plain-English read of the pattern, not a guarantee.</li>
-</ul>
-<h2>Charts</h2>
-<h3>10-Minute Intraday Profile</h3>
-<p>This chart asks: &quot;At each 10-minute time slot, did SPY usually move up or down?&quot;</p>
-<p>The bar ending at <code>13:30</code> stands out on the positive side. The bar ending at <code>15:30</code> stands out on the negative side.</p>
-<figure><img src="charts/spy_sip_10m_profile.svg" alt="10-minute profile" loading="lazy"></figure>
-<h3>5-Minute Intraday Profile</h3>
-<p>This zooms in closer. It helps answer whether the move is broad or concentrated in a smaller slice of time.</p>
-<p>The <code>13:30</code> positive pattern still appears. The <code>10:50</code> and <code>15:25</code> windows show down-side pressure.</p>
-<figure><img src="charts/spy_sip_5m_profile.svg" alt="5-minute profile" loading="lazy"></figure>
-<h3>Candidate Train/Test Means</h3>
-<p>This chart checks whether a pattern worked in both the earlier part of the year and the later part of the year.</p>
-<p>That matters because a pattern that only worked in the past, then disappeared later, is much less useful.</p>
-<figure><img src="charts/spy_sip_candidate_train_test.svg" alt="train test means" loading="lazy"></figure>
-<h3>13:30 Monthly Consistency</h3>
-<p>This is the most important chart.</p>
-<p>It shows the 13:20-13:30 window month by month. The pattern was positive in 12 of 13 months, which makes it more interesting than a one-off lucky average.</p>
-<figure><img src="charts/spy_sip_1330_monthly.svg" alt="13:30 monthly" loading="lazy"></figure>
-<h3>Cumulative Candidate Paths</h3>
-<p>This shows how each pattern built up over time.</p>
-<p>We want to avoid patterns that only look good because of one or two lucky days. A steadier line is more interesting for further research.</p>
-<figure><img src="charts/spy_sip_candidate_cumulative.svg" alt="cumulative candidates" loading="lazy"></figure>
-<h3>Day/Time Heatmap</h3>
-<p>This is a quick map of weekday plus time of day.</p>
-<p>Green areas mean that time/day combination tended to be positive. Red areas mean it tended to be negative.</p>
-<figure><img src="charts/spy_sip_dow_time_heatmap.svg" alt="weekday heatmap" loading="lazy"></figure>
-<h2>What This Means In Business Terms</h2>
-<p>The best current lead is:</p>
-<p><strong>If we were going to study one time-based SPY pattern further, it should be the 13:20-13:30 long window.</strong></p>
-<p>The short-side windows are worth watching too, especially <code>10:45-10:50</code>, but they are not as clean as the 13:30 long pattern.</p>
-<p>The main caution: these are small moves. A business-minded way to think about it is margin. If the average gross edge is about 1-2 bps, then trading costs, spread, execution quality, and discipline matter a lot. A pattern can be real in the data but still not be profitable after friction.</p>
+<h2>Tuesday 13:30-13:40 Deep Read</h2>
+<p>This pattern appeared in 282 Tuesday observations and was positive in 6 of 6 years represented in the expanded sample.</p>
+<figure><img src="charts/spy_2021_2026_tue_1340_yearly.svg" alt="Tuesday 13:30-13:40 yearly results" loading="lazy"></figure>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Year</th>
+<th>Days</th>
+<th>Avg Move</th>
+<th>Win Rate</th>
+<th>Total Gross Move</th>
+</tr></thead><tbody>
+<tr>
+<td>2021</td>
+<td>52</td>
+<td>+2.0517 bps</td>
+<td>73.1%</td>
+<td>+106.7 bps</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>52</td>
+<td>+1.3716 bps</td>
+<td>51.9%</td>
+<td>+71.3 bps</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>51</td>
+<td>+0.2826 bps</td>
+<td>52.9%</td>
+<td>+14.4 bps</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>53</td>
+<td>+2.4678 bps</td>
+<td>66.0%</td>
+<td>+130.8 bps</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>52</td>
+<td>+3.3515 bps</td>
+<td>57.7%</td>
+<td>+174.3 bps</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>22</td>
+<td>+3.7106 bps</td>
+<td>63.6%</td>
+<td>+81.6 bps</td>
+</tr>
+</tbody></table></div>
+<h2>Candidate Path Comparison</h2>
+<p>This chart compares how the strongest expanded-history leads accumulated over time. The goal is to spot whether a pattern built gradually or relied on a single lucky patch.</p>
+<figure><img src="charts/spy_2021_2026_candidate_paths.svg" alt="Expanded-history candidate paths" loading="lazy"></figure>
+<h2>What Changed From The 12-Month Report?</h2>
+<p>The earlier report was not wrong; it was narrower. In the last 12 months, 13:20-13:30 looked unusually clean. When we add 2021, 2022, 2023, and 2024, the signal is still nearby but shifts into a more specific version: Tuesday 13:30-13:40 and the broader 13:30 zone.</p>
+<p>That is exactly why expanding the history was useful. It prevented us from overcommitting to one recent-year pattern.</p>
 <h2>Next Decision</h2>
-<p>The next useful step is not more theory. It is a practical viability test:</p>
+<p>The next practical study should paper-track two variants side by side:</p>
 <ol>
-<li>Estimate realistic entry/exit costs.</li>
-<li>Test the 13:20-13:30 idea month by month.</li>
-<li>Compare SPY against another instrument like ES futures or QQQ.</li>
-<li>Build a simple paper-trading tracker before risking capital.</li>
+<li>The original daily 13:20-13:30 window.</li>
+<li>The refined Tuesday 13:30-13:40 window.</li>
 </ol>
+<p>For each observation, record gross move, estimated spread/slippage, and whether the day had a major market event. If Tuesday 13:30-13:40 continues to lead over the next 30-60 trading days, it becomes the better candidate for execution research.</p>
       <div class="footer-note">Generated from local Alpaca SIP data and static SVG charts. Raw API keys and raw CSV data are not included in this share package.</div>
     </section>
   </main>

@@ -1,0 +1,2 @@
+rule,train_n,train_mean_bps,train_hit_rate,train_t,test_n,test_mean_bps,test_hit_rate,test_t,test_lift_vs_baseline_bps,test_total_bps
+bucket_5m=16:00 + dow=Mon,161,3.148339,0.5714,2.0128,91,3.537194,0.5824,1.8290,3.449034,321.8846

@@ -9,54 +9,64 @@ import shutil
 from pathlib import Path
 
 
-REPORT = Path("reports/spy_12mo_1m_alpaca_sip_visual_report.md")
-DEEP_DIVE = Path("reports/spy_1320_1330_deep_dive.md")
+REPORT = Path("reports/spy_2021_2026_expanded_pattern_report.md")
+DEEP_DIVE = Path("reports/spy_2021_2026_1340_tuesday_deep_dive.md")
 CHARTS = Path("reports/charts")
 OUT = Path("share")
 
 NAV_LINKS = [
     ("index.html", "Overview"),
-    ("report.html", "Main Report"),
-    ("1320-1330.html", "13:20 Deep Dive"),
+    ("report.html", "Expanded Report"),
+    ("tuesday-1340.html", "Tuesday Deep Dive"),
     ("charts.html", "Charts"),
     ("methodology.html", "Methodology"),
 ]
 
 CHART_LIBRARY = [
     (
-        "10-Minute Intraday Profile",
+        "Tuesday 13:30-13:40 Yearly Results",
+        "charts/spy_2021_2026_tue_1340_yearly.svg",
+        "Shows the refined Tuesday pattern year by year from 2021 through 2026.",
+    ),
+    (
+        "Expanded-History Candidate Paths",
+        "charts/spy_2021_2026_candidate_paths.svg",
+        "Compares the refined Tuesday pattern, the original daily 13:20-13:30 idea, and the strongest short-bias lead.",
+    ),
+    (
+        "12-Month Reference: 10-Minute Intraday Profile",
         "charts/spy_sip_10m_profile.svg",
-        "Shows the average SPY move for each 10-minute window across the regular session.",
+        "Reference chart from the earlier 12-month pass. Useful for seeing why the 13:30 area originally stood out.",
     ),
     (
-        "5-Minute Intraday Profile",
-        "charts/spy_sip_5m_profile.svg",
-        "Zooms in on narrower windows, including the 10:50 and 15:25 short-bias areas.",
-    ),
-    (
-        "Candidate Train/Test Means",
-        "charts/spy_sip_candidate_train_test.svg",
-        "Compares earlier-period and later-period behavior for the best candidate patterns.",
-    ),
-    (
-        "13:30 Monthly Consistency",
+        "12-Month Reference: 13:30 Monthly Consistency",
         "charts/spy_sip_1330_monthly.svg",
-        "Shows the 13:20-13:30 pattern month by month.",
+        "Reference chart from the earlier 12-month pass for the original 13:20-13:30 window.",
     ),
     (
-        "Candidate Cumulative Paths",
+        "12-Month Reference: 5-Minute Intraday Profile",
+        "charts/spy_sip_5m_profile.svg",
+        "Reference chart from the earlier 12-month pass for narrower windows.",
+    ),
+    (
+        "12-Month Reference: Candidate Train/Test Means",
+        "charts/spy_sip_candidate_train_test.svg",
+        "Reference chart from the earlier 12-month pass.",
+    ),
+    (
+        "12-Month Reference: Candidate Cumulative Paths",
         "charts/spy_sip_candidate_cumulative.svg",
-        "Shows whether the candidate patterns built gradually or relied on a few outliers.",
+        "Reference chart from the earlier 12-month pass.",
     ),
     (
-        "Weekday/Time Heatmap",
+        "12-Month Reference: Weekday/Time Heatmap",
         "charts/spy_sip_dow_time_heatmap.svg",
-        "Maps average 10-minute behavior by weekday and time of day.",
+        "Reference chart from the earlier 12-month pass.",
     ),
     (
-        "13:20-13:30 Daily Outcomes",
+        "12-Month Reference: 13:20-13:30 Daily Outcomes",
         "charts/spy_1320_1330_daily_outcomes.svg",
-        "Shows every trading day for the 13:20-13:30 window as an individual outcome.",
+        "Reference chart from the earlier 12-month deep dive.",
     ),
 ]
 
@@ -454,47 +464,47 @@ def home_page() -> str:
     return """
 <div class="hero">
   <div>
-    <p class="kicker">SPY 12-month timing research</p>
-    <h1>A plain-English map of the strongest intraday pattern we found.</h1>
-    <p>The research reviewed one year of consolidated SPY minute data and looked for repeatable time-of-day and calendar behavior. The strongest lead is the 13:20-13:30 long window.</p>
+    <p class="kicker">SPY expanded timing research</p>
+    <h1>A plain-English map of the strongest intraday pattern since 2021.</h1>
+    <p>The research now reviews consolidated SPY minute data from 2021 through 2026. The broader 13:30 area still matters, but the strongest simple lead became Tuesday 13:30-13:40.</p>
   </div>
   <figure>
-    <img src="charts/spy_sip_1330_monthly.svg" alt="13:20 to 13:30 monthly consistency chart">
+    <img src="charts/spy_2021_2026_tue_1340_yearly.svg" alt="Tuesday 13:30 to 13:40 yearly chart">
   </figure>
 </div>
 
 <div class="metric-grid">
   <div class="metric">
     <div class="label">Best window</div>
-    <div class="value">13:20-13:30</div>
+    <div class="value">Tue 13:30-13:40</div>
     <div class="detail">New York time</div>
   </div>
   <div class="metric">
     <div class="label">Win rate</div>
-    <div class="value">59.1%</div>
-    <div class="detail">252 trading days tested</div>
+    <div class="value">60.6%</div>
+    <div class="detail">282 Tuesdays tested</div>
   </div>
   <div class="metric">
     <div class="label">Average move</div>
-    <div class="value">+1.44 bps</div>
+    <div class="value">+2.05 bps</div>
     <div class="detail">Before spread and slippage</div>
   </div>
   <div class="metric">
-    <div class="label">Monthly read</div>
-    <div class="value">12 / 13</div>
-    <div class="detail">Positive months</div>
+    <div class="label">Yearly read</div>
+    <div class="value">6 / 6</div>
+    <div class="detail">Positive years represented</div>
   </div>
 </div>
 
 <h2>Start Here</h2>
 <div class="link-grid">
-  <a class="link-card" href="1320-1330.html">
-    <strong>13:20 Deep Dive</strong>
-    <span>The focused business case for the best pattern and how to paper-track it next.</span>
+  <a class="link-card" href="tuesday-1340.html">
+    <strong>Tuesday Deep Dive</strong>
+    <span>The focused business case for the refined Tuesday 13:30-13:40 pattern.</span>
   </a>
   <a class="link-card" href="report.html">
-    <strong>Main Report</strong>
-    <span>The broader plain-English report covering all discovered patterns.</span>
+    <strong>Expanded Report</strong>
+    <span>The broader plain-English report covering the 2021-2026 rerun.</span>
   </a>
   <a class="link-card" href="charts.html">
     <strong>Chart Library</strong>
@@ -507,8 +517,8 @@ def home_page() -> str:
 </div>
 
 <h2>Bottom Line</h2>
-<p>If we were going to study one time-based SPY pattern further, it should be the <strong>13:20-13:30 long window</strong>. It is simple, once per trading day, positive in both the earlier and later periods, and positive in 12 of 13 months.</p>
-<p>The main caution is business margin: a 1-2 bps average gross move is small. Execution quality, spread, slippage, and discipline matter.</p>
+<p>If we were going to study one time-based SPY pattern further after expanding the history, it should be the <strong>Tuesday 13:30-13:40 long window</strong>.</p>
+<p>The old 13:20-13:30 daily idea is not dead; it became a weaker part of a broader 13:30-area pattern. The refined Tuesday version is the cleaner multi-year lead.</p>
 """
 
 
@@ -540,7 +550,7 @@ def methodology_page() -> str:
 <h1>Methodology and Notes</h1>
 
 <h2>What We Studied</h2>
-<p>The analysis used SPY 1-minute bars from Alpaca SIP, covering 2025-06-03 through 2026-06-03. SIP is the consolidated feed, so it is the better source compared with the IEX-only test pass.</p>
+<p>The expanded analysis used SPY 1-minute bars from Alpaca SIP, covering 2021-01-04 through 2026-06-03 for regular-session observations. SIP is the consolidated feed, so it is the better source compared with the earlier IEX-only test pass.</p>
 
 <h2>How The Pattern Search Worked</h2>
 <p>The scripts converted 1-minute bars into clean 5-minute, 10-minute, 15-minute, and 30-minute windows. The main report focuses on 10-minute windows because they are less noisy than individual minutes but still specific enough to reveal time-of-day behavior.</p>
@@ -562,7 +572,7 @@ def methodology_page() -> str:
 </ul>
 
 <h2>Recommended Next Step</h2>
-<p>Paper-track the exact 13:20-13:30 rule for 30 trading days without changing it. Record the 13:20 price, 13:30 price, gross result, estimated spread/slippage, and whether the day had a major market event.</p>
+<p>Paper-track two rules side by side: the original daily 13:20-13:30 window and the refined Tuesday 13:30-13:40 window. Record gross result, estimated spread/slippage, and whether the day had a major market event.</p>
 """
 
 
@@ -591,8 +601,8 @@ def main() -> int:
     )
     if DEEP_DIVE.exists():
         write_page(
-            "1320-1330.html",
-            "SPY 13:20-13:30 Deep Dive",
+            "tuesday-1340.html",
+            "SPY Tuesday 13:30-13:40 Deep Dive",
             markdown_to_html(DEEP_DIVE.read_text()),
         )
     write_page("charts.html", "SPY Pattern Chart Library", charts_page())

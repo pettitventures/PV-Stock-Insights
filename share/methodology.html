@@ -261,8 +261,8 @@
       <a class="brand" href="index.html">PV Stock Insights</a>
       <nav class="nav" aria-label="Site navigation">
         <a href="index.html">Overview</a>
-<a href="report.html">Main Report</a>
-<a href="1320-1330.html">13:20 Deep Dive</a>
+<a href="report.html">Expanded Report</a>
+<a href="tuesday-1340.html">Tuesday Deep Dive</a>
 <a href="charts.html">Charts</a>
 <a href="methodology.html" class="active">Methodology</a>
       </nav>
@@ -275,7 +275,7 @@
 <h1>Methodology and Notes</h1>
 
 <h2>What We Studied</h2>
-<p>The analysis used SPY 1-minute bars from Alpaca SIP, covering 2025-06-03 through 2026-06-03. SIP is the consolidated feed, so it is the better source compared with the IEX-only test pass.</p>
+<p>The expanded analysis used SPY 1-minute bars from Alpaca SIP, covering 2021-01-04 through 2026-06-03 for regular-session observations. SIP is the consolidated feed, so it is the better source compared with the earlier IEX-only test pass.</p>
 
 <h2>How The Pattern Search Worked</h2>
 <p>The scripts converted 1-minute bars into clean 5-minute, 10-minute, 15-minute, and 30-minute windows. The main report focuses on 10-minute windows because they are less noisy than individual minutes but still specific enough to reveal time-of-day behavior.</p>
@@ -297,7 +297,7 @@
 </ul>
 
 <h2>Recommended Next Step</h2>
-<p>Paper-track the exact 13:20-13:30 rule for 30 trading days without changing it. Record the 13:20 price, 13:30 price, gross result, estimated spread/slippage, and whether the day had a major market event.</p>
+<p>Paper-track two rules side by side: the original daily 13:20-13:30 window and the refined Tuesday 13:30-13:40 window. Record gross result, estimated spread/slippage, and whether the day had a major market event.</p>
 
       <div class="footer-note">Generated from local Alpaca SIP data and static SVG charts. Raw API keys and raw CSV data are not included in this share package.</div>
     </section>

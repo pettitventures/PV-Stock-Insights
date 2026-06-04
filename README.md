@@ -108,8 +108,8 @@ The publishable folder is `share/`. It includes the HTML report and chart SVGs o
 Generated pages:
 
 - `share/index.html`: overview / starting point
-- `share/report.html`: main pattern report
-- `share/1320-1330.html`: focused deep dive on the 13:20-13:30 pattern
+- `share/report.html`: expanded 2021-2026 pattern report
+- `share/tuesday-1340.html`: focused deep dive on the Tuesday 13:30-13:40 pattern
 - `share/charts.html`: chart library
 - `share/methodology.html`: data and method notes
 
