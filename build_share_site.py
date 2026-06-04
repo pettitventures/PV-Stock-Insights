@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import html
+import csv
 import re
 import shutil
 from pathlib import Path
@@ -15,6 +16,7 @@ ATLAS_OVERVIEW = Path("reports/pattern_atlas_overview.md")
 ATLAS_LEADERBOARD = Path("reports/pattern_atlas_leaderboard.md")
 ATLAS_MAG7 = Path("reports/pattern_atlas_mag7.md")
 ATLAS_TOP100 = Path("reports/pattern_atlas_top100.md")
+ATLAS_SUMMARY = Path("reports/pattern_atlas_summary.csv")
 CHARTS = Path("reports/charts")
 OUT = Path("share")
 
@@ -200,42 +202,52 @@ def markdown_to_html(markdown: str) -> str:
 def css() -> str:
     return """
     :root {
-      --bg: #f6f7f9;
+      --bg: #f4f6f8;
       --paper: #ffffff;
-      --ink: #172033;
+      --ink: #101828;
       --muted: #667085;
-      --line: #d9dee7;
-      --accent: #14532d;
-      --accent-2: #1d4ed8;
-      --accent-soft: #e9f7ef;
-      --danger: #9f2d20;
+      --muted-2: #8a94a6;
+      --line: #d8dee8;
+      --line-soft: #edf1f6;
+      --accent: #0f766e;
+      --accent-dark: #115e59;
+      --accent-soft: #e6f6f3;
+      --blue: #1d4ed8;
+      --blue-soft: #e9f0ff;
+      --red: #b42318;
+      --red-soft: #fff0ee;
+      --shadow: 0 12px 30px rgba(16, 24, 40, 0.07);
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       background: var(--bg);
       color: var(--ink);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.55;
+      line-height: 1.5;
     }
-    a { color: var(--accent); font-weight: 650; }
+    a { color: var(--accent-dark); font-weight: 700; }
     .site-header {
       background: var(--paper);
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
-      z-index: 2;
+      z-index: 10;
+      box-shadow: 0 1px 0 rgba(16, 24, 40, 0.02);
     }
     .header-inner {
-      max-width: 1180px;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 14px 18px;
+      padding: 12px 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
     }
+    .brand-wrap { min-width: 190px; }
     .brand {
+      display: block;
       text-decoration: none;
       color: var(--ink);
       font-size: 17px;
@@ -243,75 +255,107 @@ def css() -> str:
       letter-spacing: 0;
       white-space: nowrap;
     }
+    .brand-sub {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
     .nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      gap: 4px;
       justify-content: flex-end;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
+    .nav::-webkit-scrollbar { display: none; }
     .nav a {
       display: inline-flex;
       align-items: center;
-      min-height: 34px;
-      padding: 6px 10px;
-      border: 1px solid transparent;
-      border-radius: 8px;
+      min-height: 36px;
+      padding: 7px 11px;
+      border-radius: 7px;
       color: var(--ink);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 750;
+      white-space: nowrap;
     }
     .nav a:hover, .nav a.active {
-      border-color: #b9d8c2;
-      color: var(--accent);
+      color: var(--accent-dark);
       background: var(--accent-soft);
     }
     main {
-      max-width: 1180px;
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 28px 18px 64px;
+      padding: 26px 22px 72px;
     }
     .page {
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: clamp(22px, 4vw, 46px);
-      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      display: grid;
+      gap: 22px;
     }
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-      gap: 24px;
-      align-items: start;
-      margin-bottom: 26px;
+      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+      gap: 18px;
+      align-items: stretch;
     }
-    .kicker {
+    .panel {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    .hero-copy {
+      padding: clamp(24px, 4vw, 42px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 430px;
+    }
+    .hero-visual {
+      padding: 14px;
+      min-height: 430px;
+    }
+    .hero-visual figure {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+    .hero-visual img {
+      height: 100%;
+      object-fit: contain;
+    }
+    .kicker, .eyebrow {
       margin: 0 0 10px;
       color: var(--accent);
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 12px;
+      font-weight: 850;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.09em;
     }
     h1 {
       margin: 0 0 18px;
-      font-size: clamp(32px, 5vw, 52px);
-      line-height: 1.02;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.01;
       letter-spacing: 0;
     }
     h2 {
-      margin: 42px 0 14px;
-      font-size: clamp(22px, 3vw, 31px);
+      margin: 34px 0 12px;
+      font-size: clamp(22px, 3vw, 30px);
       line-height: 1.16;
       letter-spacing: 0;
     }
     h3 {
-      margin: 34px 0 10px;
+      margin: 26px 0 9px;
       font-size: 20px;
       line-height: 1.25;
       letter-spacing: 0;
     }
-    p, li { font-size: 17px; }
+    p, li { font-size: 16px; }
     p { margin: 12px 0; }
     ul, ol { padding-left: 24px; }
     strong { color: var(--accent); }
@@ -322,30 +366,47 @@ def css() -> str:
       padding: 1px 5px;
       font-size: 0.92em;
     }
-    .note {
-      margin: 0 0 22px;
-      padding: 14px 16px;
-      border: 1px solid #b7e2c5;
-      border-radius: 8px;
-      background: var(--accent-soft);
-      color: #174d2b;
-      font-size: 16px;
+    .muted { color: var(--muted); }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
     }
-    .metric-grid, .link-grid {
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 9px;
+      border-radius: 8px;
+      background: var(--blue-soft);
+      color: #1e3a8a;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .badge.good {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+    .badge.warn {
+      background: #fff7e6;
+      color: #8a4b00;
+    }
+    .metric-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      margin: 20px 0 26px;
     }
-    .metric, .link-card {
+    .metric {
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: #fbfcfe;
+      background: var(--paper);
       padding: 16px;
+      box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
     }
     .metric .label {
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -362,10 +423,29 @@ def css() -> str:
       color: var(--muted);
       font-size: 13px;
     }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 10px;
+    }
+    .section-head h2 { margin-top: 0; }
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
     .link-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 16px;
       display: block;
       color: var(--ink);
       text-decoration: none;
+      min-height: 138px;
+      box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
     }
     .link-card strong {
       display: block;
@@ -378,36 +458,99 @@ def css() -> str:
       font-size: 14px;
       font-weight: 500;
     }
-    .link-card:hover { border-color: #9ac9a8; }
+    .link-card:hover {
+      border-color: #99d1c9;
+      transform: translateY(-1px);
+    }
+    .report-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 22px;
+      align-items: start;
+    }
+    .report-body {
+      min-width: 0;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(22px, 4vw, 42px);
+      box-shadow: var(--shadow);
+    }
+    .report-body h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.08;
+      max-width: 880px;
+    }
+    .report-body > p:first-of-type {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 900px;
+    }
+    .report-aside {
+      position: sticky;
+      top: 82px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
+    }
+    .report-aside h2 {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+    .aside-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .aside-list a {
+      display: block;
+      padding: 8px 9px;
+      border-radius: 7px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .aside-list a:hover, .aside-list a.active { background: var(--accent-soft); color: var(--accent-dark); }
     .table-wrap {
       overflow-x: auto;
       border: 1px solid var(--line);
       border-radius: 8px;
-      margin: 18px 0 22px;
+      margin: 16px 0 24px;
+      background: var(--paper);
     }
     table {
       width: 100%;
       border-collapse: collapse;
       min-width: 720px;
-      font-size: 15px;
+      font-size: 14px;
     }
     th, td {
-      padding: 12px 14px;
+      padding: 10px 12px;
       border-bottom: 1px solid var(--line);
       text-align: left;
       vertical-align: top;
     }
     th {
-      background: #f2f5f9;
-      font-weight: 700;
+      background: #f7f9fc;
+      color: #344054;
+      font-weight: 800;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
+    tbody tr:nth-child(even) td { background: #fbfcfe; }
     tr:last-child td { border-bottom: 0; }
     figure {
-      margin: 18px 0 34px;
+      margin: 16px 0 28px;
       padding: 12px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: #fbfcfe;
+      background: #ffffff;
     }
     figure figcaption {
       margin-top: 10px;
@@ -421,28 +564,99 @@ def css() -> str:
     }
     .chart-list {
       display: grid;
-      gap: 22px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
     }
     .chart-item {
-      border-top: 1px solid var(--line);
-      padding-top: 22px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
+    }
+    .chart-item h2 {
+      margin-top: 0;
+      font-size: 19px;
+    }
+    .chart-item p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .chart-item figure {
+      margin-bottom: 0;
+      padding: 0;
+      border: 0;
     }
     .footer-note {
-      margin-top: 42px;
+      max-width: 1320px;
+      margin: 28px auto 0;
       padding-top: 18px;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 14px;
     }
+    .decision-band {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.55fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+    .decision-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(16, 24, 40, 0.04);
+    }
+    .decision-card h2 { margin-top: 0; }
+    .rank-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .rank-list li {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid var(--line-soft);
+      border-radius: 8px;
+      background: #fbfcfe;
+      font-size: 14px;
+    }
+    .rank {
+      width: 28px;
+      height: 28px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-weight: 850;
+      font-size: 13px;
+    }
+    .score {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
     @media (max-width: 920px) {
-      .hero, .metric-grid, .link-grid { grid-template-columns: 1fr 1fr; }
+      .hero, .decision-band, .report-shell { grid-template-columns: 1fr; }
+      .metric-grid, .link-grid, .chart-list { grid-template-columns: 1fr 1fr; }
       .header-inner { align-items: flex-start; flex-direction: column; }
       .nav { justify-content: flex-start; }
+      .report-aside { position: static; }
     }
     @media (max-width: 640px) {
-      main { padding: 18px 12px 42px; }
-      .page { padding: 20px 14px; }
-      .hero, .metric-grid, .link-grid { grid-template-columns: 1fr; }
+      main { padding: 16px 12px 44px; }
+      .hero, .metric-grid, .link-grid, .chart-list { grid-template-columns: 1fr; }
+      .hero-copy, .hero-visual { min-height: 0; }
+      .hero-visual img { height: auto; }
       p, li { font-size: 16px; }
       table { min-width: 640px; }
     }
@@ -457,40 +671,116 @@ def nav_html(active: str) -> str:
     return "\n".join(links)
 
 
+def sidebar_html(active: str) -> str:
+    primary = [
+        ("atlas.html", "Market-wide read"),
+        ("leaderboard.html", "Pattern leaderboard"),
+        ("mag7.html", "MAG7 patterns"),
+        ("top100.html", "Top 100 patterns"),
+        ("tuesday-1340.html", "Tuesday SPY case"),
+        ("charts.html", "Chart library"),
+        ("methodology.html", "Method notes"),
+    ]
+    items = []
+    for href, label in primary:
+        class_name = ' class="active"' if href == active else ""
+        items.append(f'<li><a href="{href}"{class_name}>{label}</a></li>')
+    return (
+        '<aside class="report-aside">'
+        "<h2>Research Sections</h2>"
+        f'<ul class="aside-list">{"".join(items)}</ul>'
+        "</aside>"
+    )
+
+
 def page_shell(body: str, title: str, active: str) -> str:
+    if active == "index.html":
+        content = f'<section class="page">{body}</section>'
+    else:
+        content = (
+            '<section class="report-shell">'
+            f'<article class="report-body">{body}</article>'
+            f"{sidebar_html(active)}"
+            "</section>"
+        )
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{html.escape(title)}</title>
-  <meta name="description" content="Plain-English SPY intraday pattern research report with charts.">
+  <meta name="description" content="Plain-English market pattern atlas with intraday research reports and charts.">
   <style>{css()}</style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="index.html">PV Stock Insights</a>
+      <div class="brand-wrap">
+        <a class="brand" href="index.html">PV Stock Insights</a>
+        <span class="brand-sub">Pattern Atlas Research</span>
+      </div>
       <nav class="nav" aria-label="Site navigation">
         {nav_html(active)}
       </nav>
     </div>
   </header>
   <main>
-    <section class="page">
-      <div class="note">Prepared as a plain-English research summary. This is not investment advice.</div>
-      {body}
-      <div class="footer-note">Generated from local Alpaca SIP data and static SVG charts. Raw API keys and raw CSV data are not included in this share package.</div>
-    </section>
+    {content}
+    <div class="footer-note">Research only. Not investment advice. Generated from local Alpaca SIP data and static SVG charts; raw API keys and raw CSV data are not included in this share package.</div>
   </main>
 </body>
 </html>
 """
 
 
+def load_atlas_summary() -> list[dict[str, str]]:
+    if not ATLAS_SUMMARY.exists():
+        return []
+    with ATLAS_SUMMARY.open(newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def top_atlas_patterns(limit: int = 3) -> list[dict[str, str]]:
+    rows = [
+        row for row in load_atlas_summary()
+        if row.get("rule_type") in {"best_window", "tuesday_1340"}
+    ]
+    rows.sort(key=lambda row: float(row.get("survival_score") or 0), reverse=True)
+    seen: set[tuple[str, str, str]] = set()
+    output = []
+    for row in rows:
+        key = (row.get("symbol", ""), row.get("label", ""), row.get("direction", ""))
+        if key in seen:
+            continue
+        seen.add(key)
+        output.append(row)
+        if len(output) >= limit:
+            break
+    return output
+
+
+def rank_list_html(rows: list[dict[str, str]]) -> str:
+    if not rows:
+        return '<p class="muted">Run the atlas analyzer to populate the pattern leaderboard.</p>'
+    items = []
+    for index, row in enumerate(rows, start=1):
+        symbol = html.escape(row.get("symbol", "n/a"))
+        label = html.escape(row.get("label", "n/a"))
+        direction = html.escape(row.get("direction", ""))
+        score = html.escape(row.get("survival_score", ""))
+        grade = html.escape(row.get("confidence_grade", ""))
+        items.append(
+            f"<li><span class=\"rank\">{index}</span>"
+            f"<span><strong>{symbol}</strong><br>{label} {direction}</span>"
+            f"<span class=\"score\">{score} {grade}</span></li>"
+        )
+    return f'<ol class="rank-list">{"".join(items)}</ol>'
+
+
 def home_page() -> str:
+    top_rows = top_atlas_patterns()
     atlas_note = (
-        "<p>The next phase expands from one symbol into a Pattern Atlas: SPY, MAG7, and top ETF/index holdings. The key question is whether Tuesday 13:30-13:40 is market-wide behavior or just a SPY-specific clue.</p>"
+        "<p>The sample atlas is live. It validates the pipeline on SPY, AAPL, and NVDA, then asks whether the SPY Tuesday window is repeating outside SPY.</p>"
         if ATLAS_OVERVIEW.exists()
         else "<p>The next phase is ready to run as a Pattern Atlas once sample symbols are fetched and analyzed.</p>"
     )
@@ -501,14 +791,24 @@ def home_page() -> str:
     )
     return f"""
 <div class="hero">
-  <div>
+  <div class="panel hero-copy">
+    <div>
     <p class="kicker">Market-wide timing research</p>
-    <h1>A plain-English atlas of recurring intraday patterns.</h1>
+    <h1>Is the SPY timing clue actually market-wide?</h1>
     {atlas_note}
+    <div class="badge-row">
+      <span class="badge good">Static research site</span>
+      <span class="badge">10-minute windows</span>
+      <span class="badge warn">Sample run: 3 symbols</span>
+    </div>
+    </div>
+    <div class="muted">Built for business review: rankings, charts, and plain-English reads first; raw data stays local.</div>
   </div>
-  <figure>
-    <img src="{hero_chart}" alt="Market rhythm chart">
-  </figure>
+  <div class="panel hero-visual">
+    <figure>
+      <img src="{hero_chart}" alt="Market rhythm chart">
+    </figure>
+  </div>
 </div>
 
 <div class="metric-grid">
@@ -534,7 +834,24 @@ def home_page() -> str:
   </div>
 </div>
 
-<h2>Start Here</h2>
+<div class="decision-band">
+  <section class="decision-card">
+    <p class="eyebrow">Current Read</p>
+    <h2>Promising, but not proven market-wide yet.</h2>
+    <p>The first sample run says the Tuesday 13:30-13:40 idea deserves expansion. It does not yet prove the behavior exists across the full market universe.</p>
+  </section>
+  <section class="decision-card">
+    <p class="eyebrow">Top Sample Leads</p>
+    {rank_list_html(top_rows)}
+  </section>
+</div>
+
+<div class="section-head">
+  <div>
+    <p class="eyebrow">Research Map</p>
+    <h2>Where to go next</h2>
+  </div>
+</div>
 <div class="link-grid">
   <a class="link-card" href="atlas.html">
     <strong>Market-Wide Atlas</strong>
@@ -569,9 +886,6 @@ def home_page() -> str:
     <span>Data source, assumptions, limitations, and what should be tested next.</span>
   </a>
 </div>
-
-<h2>Bottom Line</h2>
-<p>The next serious question is not just whether SPY had a pattern. It is whether the same clock-time behavior appears across other important stocks. That is what the Pattern Atlas is built to test.</p>
 """
 
 
