@@ -15,6 +15,8 @@ The best pattern found is simple:
 
 It did not happen every day. But over the last 12 months, that 10-minute window was positive about 59% of the time and was positive in 12 of the 13 calendar months in the sample.
 
+There is now a standalone deep dive for this specific pattern: [13:20-13:30 deep dive](1320-1330.html).
+
 The other patterns are interesting, but less clean.
 
 ## Best Patterns

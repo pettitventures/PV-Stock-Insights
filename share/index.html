@@ -109,6 +109,30 @@
       color: #174d2b;
       font-size: 16px;
     }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 18px;
+    }
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 650;
+      background: #fff;
+    }
+    .nav a:hover { border-color: #8bbf9a; color: var(--accent); }
+    article p a {
+      color: var(--accent);
+      font-weight: 650;
+    }
     .footer-note {
       margin-top: 42px;
       padding-top: 18px;
@@ -126,6 +150,10 @@
 <body>
   <main>
     <article>
+      <nav class="nav" aria-label="Report navigation">
+        <a href="index.html">Main report</a>
+        <a href="1320-1330.html">13:20-13:30 deep dive</a>
+      </nav>
       <div class="top-note">Prepared as a plain-English research summary. This is not investment advice.</div>
       <h1>SPY 12-Month Pattern Report</h1>
 <p>Data source: Alpaca SIP 1-minute SPY bars from 2025-06-03 through 2026-06-03.</p>
@@ -136,6 +164,7 @@
 <p>The best pattern found is simple:</p>
 <p><strong>SPY tended to rise between 13:20 and 13:30 New York time.</strong></p>
 <p>It did not happen every day. But over the last 12 months, that 10-minute window was positive about 59% of the time and was positive in 12 of the 13 calendar months in the sample.</p>
+<p>There is now a standalone deep dive for this specific pattern: <a href="1320-1330.html">13:20-13:30 deep dive</a>.</p>
 <p>The other patterns are interesting, but less clean.</p>
 <h2>Best Patterns</h2>
 <div class="table-wrap"><table>
@@ -236,10 +265,10 @@
 <h2>Next Decision</h2>
 <p>The next useful step is not more theory. It is a practical viability test:</p>
 <ol>
-<li>1. Estimate realistic entry/exit costs.</li>
-<li>2. Test the 13:20-13:30 idea month by month.</li>
-<li>3. Compare SPY against another instrument like ES futures or QQQ.</li>
-<li>4. Build a simple paper-trading tracker before risking capital.</li>
+<li>Estimate realistic entry/exit costs.</li>
+<li>Test the 13:20-13:30 idea month by month.</li>
+<li>Compare SPY against another instrument like ES futures or QQQ.</li>
+<li>Build a simple paper-trading tracker before risking capital.</li>
 </ol>
       <div class="footer-note">Generated from local Alpaca SIP data and static SVG charts. Raw API keys and raw CSV data are not included in this share package.</div>
     </article>

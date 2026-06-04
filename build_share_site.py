@@ -10,12 +10,18 @@ from pathlib import Path
 
 
 REPORT = Path("reports/spy_12mo_1m_alpaca_sip_visual_report.md")
+DEEP_DIVE = Path("reports/spy_1320_1330_deep_dive.md")
 CHARTS = Path("reports/charts")
 OUT = Path("share")
 
 
 def inline_markdown(text: str) -> str:
     escaped = html.escape(text)
+    escaped = re.sub(
+        r"\[([^\]]+)\]\(([^)]+)\)",
+        lambda match: f'<a href="{html.escape(match.group(2), quote=True)}">{match.group(1)}</a>',
+        escaped,
+    )
     escaped = re.sub(r"`([^`]+)`", r"<code>\1</code>", escaped)
     escaped = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", escaped)
     return escaped
@@ -84,7 +90,7 @@ def markdown_to_html(markdown: str) -> str:
             if not in_ol:
                 out.append("<ol>")
                 in_ol = True
-            out.append(f"<li>{inline_markdown(re.sub(r'^\\d+\\. ', '', line))}</li>")
+            out.append(f"<li>{inline_markdown(re.sub(r'^\d+\. ', '', line))}</li>")
         elif line.startswith("- "):
             if not in_ul:
                 out.append("<ul>")
@@ -107,13 +113,13 @@ def markdown_to_html(markdown: str) -> str:
     return "\n".join(out)
 
 
-def page_shell(body: str) -> str:
+def page_shell(body: str, title: str = "SPY 12-Month Pattern Report") -> str:
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SPY 12-Month Pattern Report</title>
+  <title>{html.escape(title)}</title>
   <meta name="description" content="Plain-English SPY intraday pattern research report with charts.">
   <style>
     :root {{
@@ -219,6 +225,30 @@ def page_shell(body: str) -> str:
       color: #174d2b;
       font-size: 16px;
     }}
+    .nav {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 18px;
+    }}
+    .nav a {{
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 650;
+      background: #fff;
+    }}
+    .nav a:hover {{ border-color: #8bbf9a; color: var(--accent); }}
+    article p a {{
+      color: var(--accent);
+      font-weight: 650;
+    }}
     .footer-note {{
       margin-top: 42px;
       padding-top: 18px;
@@ -236,6 +266,10 @@ def page_shell(body: str) -> str:
 <body>
   <main>
     <article>
+      <nav class="nav" aria-label="Report navigation">
+        <a href="index.html">Main report</a>
+        <a href="1320-1330.html">13:20-13:30 deep dive</a>
+      </nav>
       <div class="top-note">Prepared as a plain-English research summary. This is not investment advice.</div>
       {body}
       <div class="footer-note">Generated from local Alpaca SIP data and static SVG charts. Raw API keys and raw CSV data are not included in this share package.</div>
@@ -258,6 +292,11 @@ def main() -> int:
 
     body = markdown_to_html(REPORT.read_text())
     (OUT / "index.html").write_text(page_shell(body))
+    if DEEP_DIVE.exists():
+        deep_dive_body = markdown_to_html(DEEP_DIVE.read_text())
+        (OUT / "1320-1330.html").write_text(
+            page_shell(deep_dive_body, "SPY 13:20-13:30 Deep Dive")
+        )
     (OUT / "README.md").write_text(
         "# Share Site\n\n"
         "Static report package for Cloudflare Pages, Netlify, or any static host.\n\n"
