@@ -105,6 +105,14 @@ python3 build_share_site.py
 
 The publishable folder is `share/`. It includes the HTML report and chart SVGs only; it does not include `.env` files or raw CSV data.
 
+Generated pages:
+
+- `share/index.html`: overview / starting point
+- `share/report.html`: main pattern report
+- `share/1320-1330.html`: focused deep dive on the 13:20-13:30 pattern
+- `share/charts.html`: chart library
+- `share/methodology.html`: data and method notes
+
 Cloudflare Pages setup:
 
 - Connect the GitHub repository to Cloudflare Pages.

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PV Stock Insights</title>
+  <title>SPY Pattern Chart Library</title>
   <meta name="description" content="Plain-English SPY intraday pattern research report with charts.">
   <style>
     :root {
@@ -260,10 +260,10 @@
     <div class="header-inner">
       <a class="brand" href="index.html">PV Stock Insights</a>
       <nav class="nav" aria-label="Site navigation">
-        <a href="index.html" class="active">Overview</a>
+        <a href="index.html">Overview</a>
 <a href="report.html">Main Report</a>
 <a href="1320-1330.html">13:20 Deep Dive</a>
-<a href="charts.html">Charts</a>
+<a href="charts.html" class="active">Charts</a>
 <a href="methodology.html">Methodology</a>
       </nav>
     </div>
@@ -271,65 +271,71 @@
   <main>
     <section class="page">
       <div class="note">Prepared as a plain-English research summary. This is not investment advice.</div>
-      
-<div class="hero">
-  <div>
-    <p class="kicker">SPY 12-month timing research</p>
-    <h1>A plain-English map of the strongest intraday pattern we found.</h1>
-    <p>The research reviewed one year of consolidated SPY minute data and looked for repeatable time-of-day and calendar behavior. The strongest lead is the 13:20-13:30 long window.</p>
-  </div>
+      <h1>Chart Library</h1>
+<p>These are the visuals behind the reports. Use this page when you want to review the evidence without reading the full narrative.</p>
+<div class="chart-list">
+<section class="chart-item">
+  <h2>10-Minute Intraday Profile</h2>
+  <p>Shows the average SPY move for each 10-minute window across the regular session.</p>
   <figure>
-    <img src="charts/spy_sip_1330_monthly.svg" alt="13:20 to 13:30 monthly consistency chart">
+    <img src="charts/spy_sip_10m_profile.svg" alt="10-Minute Intraday Profile" loading="lazy">
   </figure>
+</section>
+
+
+<section class="chart-item">
+  <h2>5-Minute Intraday Profile</h2>
+  <p>Zooms in on narrower windows, including the 10:50 and 15:25 short-bias areas.</p>
+  <figure>
+    <img src="charts/spy_sip_5m_profile.svg" alt="5-Minute Intraday Profile" loading="lazy">
+  </figure>
+</section>
+
+
+<section class="chart-item">
+  <h2>Candidate Train/Test Means</h2>
+  <p>Compares earlier-period and later-period behavior for the best candidate patterns.</p>
+  <figure>
+    <img src="charts/spy_sip_candidate_train_test.svg" alt="Candidate Train/Test Means" loading="lazy">
+  </figure>
+</section>
+
+
+<section class="chart-item">
+  <h2>13:30 Monthly Consistency</h2>
+  <p>Shows the 13:20-13:30 pattern month by month.</p>
+  <figure>
+    <img src="charts/spy_sip_1330_monthly.svg" alt="13:30 Monthly Consistency" loading="lazy">
+  </figure>
+</section>
+
+
+<section class="chart-item">
+  <h2>Candidate Cumulative Paths</h2>
+  <p>Shows whether the candidate patterns built gradually or relied on a few outliers.</p>
+  <figure>
+    <img src="charts/spy_sip_candidate_cumulative.svg" alt="Candidate Cumulative Paths" loading="lazy">
+  </figure>
+</section>
+
+
+<section class="chart-item">
+  <h2>Weekday/Time Heatmap</h2>
+  <p>Maps average 10-minute behavior by weekday and time of day.</p>
+  <figure>
+    <img src="charts/spy_sip_dow_time_heatmap.svg" alt="Weekday/Time Heatmap" loading="lazy">
+  </figure>
+</section>
+
+
+<section class="chart-item">
+  <h2>13:20-13:30 Daily Outcomes</h2>
+  <p>Shows every trading day for the 13:20-13:30 window as an individual outcome.</p>
+  <figure>
+    <img src="charts/spy_1320_1330_daily_outcomes.svg" alt="13:20-13:30 Daily Outcomes" loading="lazy">
+  </figure>
+</section>
 </div>
-
-<div class="metric-grid">
-  <div class="metric">
-    <div class="label">Best window</div>
-    <div class="value">13:20-13:30</div>
-    <div class="detail">New York time</div>
-  </div>
-  <div class="metric">
-    <div class="label">Win rate</div>
-    <div class="value">59.1%</div>
-    <div class="detail">252 trading days tested</div>
-  </div>
-  <div class="metric">
-    <div class="label">Average move</div>
-    <div class="value">+1.44 bps</div>
-    <div class="detail">Before spread and slippage</div>
-  </div>
-  <div class="metric">
-    <div class="label">Monthly read</div>
-    <div class="value">12 / 13</div>
-    <div class="detail">Positive months</div>
-  </div>
-</div>
-
-<h2>Start Here</h2>
-<div class="link-grid">
-  <a class="link-card" href="1320-1330.html">
-    <strong>13:20 Deep Dive</strong>
-    <span>The focused business case for the best pattern and how to paper-track it next.</span>
-  </a>
-  <a class="link-card" href="report.html">
-    <strong>Main Report</strong>
-    <span>The broader plain-English report covering all discovered patterns.</span>
-  </a>
-  <a class="link-card" href="charts.html">
-    <strong>Chart Library</strong>
-    <span>All supporting visuals in one place for quick review.</span>
-  </a>
-  <a class="link-card" href="methodology.html">
-    <strong>Methodology</strong>
-    <span>Data source, assumptions, limitations, and what should be tested next.</span>
-  </a>
-</div>
-
-<h2>Bottom Line</h2>
-<p>If we were going to study one time-based SPY pattern further, it should be the <strong>13:20-13:30 long window</strong>. It is simple, once per trading day, positive in both the earlier and later periods, and positive in 12 of 13 months.</p>
-<p>The main caution is business margin: a 1-2 bps average gross move is small. Execution quality, spread, slippage, and discipline matter.</p>
-
       <div class="footer-note">Generated from local Alpaca SIP data and static SVG charts. Raw API keys and raw CSV data are not included in this share package.</div>
     </section>
   </main>
