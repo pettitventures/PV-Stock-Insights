@@ -1,0 +1,22 @@
+symbol,group,rule_type,direction,label,rule_key,full_n,full_mean_bps,full_hit_rate,train_mean_bps,test_mean_bps,test_t_stat,positive_years,total_years,survival_score,confidence_grade,business_read
+NVDA,MAG7,tuesday_1340,long,Tue 13:30-13:40,dow=Tue + minute=13:40,282,5.014767,0.5709,4.705562,5.586330,2.0818,6,6,97.5,A,Worth studying
+NVDA,MAG7,best_window,long,Tue 13:30-13:40,dow=Tue + minute=13:40,282,5.014767,0.5709,4.705562,5.586330,2.0818,6,6,97.5,A,Worth studying
+SPY,Top 100 / S&P 500 style,tuesday_1340,long,Tue 13:30-13:40,dow=Tue + minute=13:40,282,2.053634,0.6064,1.525387,3.030091,2.3871,6,6,96.2,A,Worth studying
+SPY,Top 100 / S&P 500 style,best_window,long,Tue 13:30-13:40,dow=Tue + minute=13:40,282,2.053634,0.6064,1.525387,3.030091,2.3871,6,6,96.2,A,Worth studying
+NVDA,MAG7,best_window,short,Fri 12:40-12:50,dow=Fri + minute=12:50,274,-4.144091,0.4416,-3.364541,-5.589506,-1.8605,6,6,96.2,A,Worth studying
+AAPL,MAG7,best_window,short,Thu 12:40-12:50,dow=Thu + minute=12:50,272,-2.643340,0.4228,-1.463319,-4.914564,-2.5999,5,6,93.8,A,Worth studying
+AAPL,MAG7,best_window,short,Thu 10:00-10:10,dow=Thu + minute=10:10,272,-4.289837,0.4301,-4.498260,-3.888680,-1.4293,6,6,93.6,B,Worth studying
+AAPL,MAG7,best_window,long,Thu 10:10-10:20,dow=Thu + minute=10:20,272,4.112938,0.5515,4.152634,4.036535,1.3873,6,6,93.3,B,Worth studying
+NVDA,MAG7,best_window,long,Mon 12:10-12:20,dow=Mon + minute=12:20,252,3.098606,0.5238,1.407984,6.089705,2.2267,5,6,93.1,A,Worth studying
+AAPL,MAG7,best_window,short,Fri 13:40-13:50,dow=Fri + minute=13:50,274,-1.829015,0.4453,-1.260290,-2.883524,-1.9720,6,6,92.9,A,Worth studying
+AAPL,MAG7,best_window,long,Daily 09:50-10:00,minute=10:00,1360,2.139918,0.5309,2.013743,2.374243,1.7596,6,6,92.7,A,Worth studying
+AAPL,MAG7,best_window,long,Wed 10:00-10:10,dow=Wed + minute=10:10,280,2.337148,0.5679,0.617299,5.581813,2.3079,5,6,91.6,A,Worth studying
+NVDA,MAG7,best_window,long,Fri 12:20-12:30,dow=Fri + minute=12:30,274,2.671275,0.5073,2.450706,3.080245,1.1567,6,6,90.8,B,Worth studying
+NVDA,MAG7,best_window,short,Tue 15:30-15:40,dow=Tue + minute=15:40,282,-2.420602,0.4574,-0.712401,-5.578186,-2.0282,5,6,90.2,A,Worth studying
+SPY,Top 100 / S&P 500 style,best_window,short,Thu 12:40-12:50,dow=Thu + minute=12:50,272,-1.291484,0.4632,-0.350905,-3.101846,-2.4664,5,6,89.1,A,Worth studying
+SPY,Top 100 / S&P 500 style,best_window,short,Tue 09:40-09:50,dow=Tue + minute=09:50,282,-2.365065,0.4291,-2.775702,-1.606009,-0.9725,6,6,88.7,C,Interesting but fragile
+SPY,Top 100 / S&P 500 style,best_window,long,Wed 14:20-14:30,dow=Wed + minute=14:30,279,1.791153,0.5771,1.239566,2.826090,2.0136,5,6,88.1,A,Worth studying
+NVDA,MAG7,best_window,short,Tue 10:30-10:40,dow=Tue + minute=10:40,282,-5.230480,0.4681,-4.659440,-6.286039,-1.3325,5,6,88.0,B,Worth studying
+SPY,Top 100 / S&P 500 style,best_window,short,Thu 11:40-11:50,dow=Thu + minute=11:50,272,-1.394187,0.5074,-1.010487,-2.132706,-2.1218,5,6,87.4,A,Worth studying
+AAPL,MAG7,tuesday_1340,long,Tue 13:30-13:40,dow=Tue + minute=13:40,281,2.293793,0.5374,1.764665,3.281857,1.4335,5,6,86.2,B,Worth studying
+SPY,Top 100 / S&P 500 style,best_window,long,Mon 15:50-16:00,dow=Mon + minute=16:00,252,2.723486,0.5437,3.120090,2.021802,1.1769,5,6,85.8,B,Worth studying

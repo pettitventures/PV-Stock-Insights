@@ -131,7 +131,7 @@ def fetch_bars(args: argparse.Namespace, key_id: str, secret_key: str) -> list[d
         bars = payload.get("bars") or []
         page += 1
         rows.extend(normalize_bar(symbol, bar) for bar in bars)
-        print(f"Fetched page {page}: {len(bars):,} bars; total {len(rows):,}")
+        print(f"Fetched page {page}: {len(bars):,} bars; total {len(rows):,}", flush=True)
 
         token = payload.get("next_page_token")
         if not token:
@@ -159,7 +159,7 @@ def main() -> int:
     key_id, secret_key = require_credentials()
     rows = fetch_bars(args, key_id, secret_key)
     written = write_csv(rows, Path(args.out))
-    print(f"Wrote {written:,} bars to {args.out}")
+    print(f"Wrote {written:,} bars to {args.out}", flush=True)
     return 0
 
 

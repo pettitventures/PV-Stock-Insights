@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Methodology and Notes</title>
+  <title>Market-Wide Pattern Atlas</title>
   <meta name="description" content="Plain-English SPY intraday pattern research report with charts.">
   <style>
     :root {
@@ -261,54 +261,238 @@
       <a class="brand" href="index.html">PV Stock Insights</a>
       <nav class="nav" aria-label="Site navigation">
         <a href="index.html">Overview</a>
-<a href="atlas.html">Market-Wide Atlas</a>
+<a href="atlas.html" class="active">Market-Wide Atlas</a>
 <a href="leaderboard.html">Leaderboard</a>
 <a href="mag7.html">MAG7</a>
 <a href="top100.html">Top 100</a>
 <a href="report.html">SPY Deep Dive</a>
 <a href="tuesday-1340.html">Tuesday 13:30</a>
 <a href="charts.html">Charts</a>
-<a href="methodology.html" class="active">Methodology</a>
+<a href="methodology.html">Methodology</a>
       </nav>
     </div>
   </header>
   <main>
     <section class="page">
       <div class="note">Prepared as a plain-English research summary. This is not investment advice.</div>
-      
-<h1>Methodology and Notes</h1>
-
-<h2>Static-Only Project Posture</h2>
-<p>This site is intentionally static. Raw 1-minute bars stay local under <code>data/</code>, API keys stay in local environment files, and Cloudflare Pages serves only the generated <code>share/</code> folder.</p>
-
-<h2>What We Studied</h2>
-<p>The SPY deep dive used 1-minute bars from Alpaca SIP, covering 2021-01-04 through 2026-06-03 for regular-session observations. The Pattern Atlas uses the same bar logic across every symbol with local data available.</p>
-
-<h2>How The Pattern Search Worked</h2>
-<p>The scripts convert 1-minute bars into clean 10-minute windows for the main discovery layer. The atlas scores daily windows and weekday/time windows, then asks whether the same idea survives across train/test periods and years.</p>
-
+      <h1>Market-Wide Pattern Atlas</h1>
+<p>Symbols analyzed: 3. Main discovery layer: 10-minute regular-session windows.</p>
+<p>Business question: is Tuesday 13:30-13:40 a broader market rhythm, or just a SPY quirk?</p>
+<h2>Current Read</h2>
+<p>The three-symbol validation run is promising, but it is still a sample check. Treat this as evidence that the question is worth expanding, not as a market-wide conclusion yet.</p>
 <h2>Pattern Survival Score</h2>
-<p>The score rewards multi-year consistency, train/test agreement, meaningful sample size, and out-of-sample strength. It is a ranking tool, not proof that a pattern will work live.</p>
-
-<h2>How To Read Basis Points</h2>
-<p>A basis point is 0.01%. A move of +2 bps is roughly +0.02%. That is small, which is why execution costs matter.</p>
-
-<h2>Why Train/Test Matters</h2>
-<p>The year was split into an earlier period and a later period. A pattern is more interesting when it works in both sections instead of only looking good in the original search period.</p>
-
-<h2>What Is Not Included</h2>
-<ul>
-  <li>Trading costs</li>
-  <li>Bid/ask spread</li>
-  <li>Slippage</li>
-  <li>Tax impact</li>
-  <li>Order timing and fill quality</li>
-  <li>Out-of-sample days after 2026-06-03</li>
-</ul>
-
-<h2>Recommended Next Step</h2>
-<p>Paper-track the top three atlas patterns for 30-60 trading days. Record gross result, estimated spread/slippage, and whether the day had a major market event.</p>
-
+<p>The survival score is a plain-English ranking aid. It rewards patterns that work across years, work in both train and test periods, and have enough observations. It penalizes tiny samples and one-regime stories.</p>
+<figure><img src="charts/atlas_market_rhythm_map.svg" alt="Market rhythm map" loading="lazy"></figure>
+<h2>Strongest Long Windows</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Symbol</th>
+<th>Pattern</th>
+<th>Side</th>
+<th>Avg Move</th>
+<th>Win Rate</th>
+<th>Test Avg</th>
+<th>Years</th>
+<th>Survival</th>
+<th>Read</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>NVDA</td>
+<td>Tue 13:30-13:40</td>
+<td>long</td>
+<td>+5.015 bps</td>
+<td>57.1%</td>
+<td>+5.586 bps</td>
+<td>6/6</td>
+<td>97.5 A</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SPY</td>
+<td>Tue 13:30-13:40</td>
+<td>long</td>
+<td>+2.054 bps</td>
+<td>60.6%</td>
+<td>+3.030 bps</td>
+<td>6/6</td>
+<td>96.2 A</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AAPL</td>
+<td>Thu 10:10-10:20</td>
+<td>long</td>
+<td>+4.113 bps</td>
+<td>55.1%</td>
+<td>+4.037 bps</td>
+<td>6/6</td>
+<td>93.3 B</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>4</td>
+<td>NVDA</td>
+<td>Mon 12:10-12:20</td>
+<td>long</td>
+<td>+3.099 bps</td>
+<td>52.4%</td>
+<td>+6.090 bps</td>
+<td>5/6</td>
+<td>93.1 A</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>5</td>
+<td>AAPL</td>
+<td>Daily 09:50-10:00</td>
+<td>long</td>
+<td>+2.140 bps</td>
+<td>53.1%</td>
+<td>+2.374 bps</td>
+<td>6/6</td>
+<td>92.7 A</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>6</td>
+<td>AAPL</td>
+<td>Wed 10:00-10:10</td>
+<td>long</td>
+<td>+2.337 bps</td>
+<td>56.8%</td>
+<td>+5.582 bps</td>
+<td>5/6</td>
+<td>91.6 A</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>7</td>
+<td>NVDA</td>
+<td>Fri 12:20-12:30</td>
+<td>long</td>
+<td>+2.671 bps</td>
+<td>50.7%</td>
+<td>+3.080 bps</td>
+<td>6/6</td>
+<td>90.8 B</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>8</td>
+<td>SPY</td>
+<td>Wed 14:20-14:30</td>
+<td>long</td>
+<td>+1.791 bps</td>
+<td>57.7%</td>
+<td>+2.826 bps</td>
+<td>5/6</td>
+<td>88.1 A</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>9</td>
+<td>SPY</td>
+<td>Mon 15:50-16:00</td>
+<td>long</td>
+<td>+2.723 bps</td>
+<td>54.4%</td>
+<td>+2.022 bps</td>
+<td>5/6</td>
+<td>85.8 B</td>
+<td>Worth studying</td>
+</tr>
+</tbody></table></div>
+<h2>Tuesday 13:30-13:40 Across Symbols</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Rank</th>
+<th>Symbol</th>
+<th>Pattern</th>
+<th>Side</th>
+<th>Avg Move</th>
+<th>Win Rate</th>
+<th>Test Avg</th>
+<th>Years</th>
+<th>Survival</th>
+<th>Read</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>NVDA</td>
+<td>Tue 13:30-13:40</td>
+<td>long</td>
+<td>+5.015 bps</td>
+<td>57.1%</td>
+<td>+5.586 bps</td>
+<td>6/6</td>
+<td>97.5 A</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SPY</td>
+<td>Tue 13:30-13:40</td>
+<td>long</td>
+<td>+2.054 bps</td>
+<td>60.6%</td>
+<td>+3.030 bps</td>
+<td>6/6</td>
+<td>96.2 A</td>
+<td>Worth studying</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AAPL</td>
+<td>Tue 13:30-13:40</td>
+<td>long</td>
+<td>+2.294 bps</td>
+<td>53.7%</td>
+<td>+3.282 bps</td>
+<td>5/6</td>
+<td>86.2 B</td>
+<td>Worth studying</td>
+</tr>
+</tbody></table></div>
+<h2>Paper Tracking Plan</h2>
+<p>Track the top three patterns forward for 30-60 trading days. Keep the table simple: date, symbol, planned window, gross result, estimated spread/slippage, and notes about market-moving news.</p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Slot</th>
+<th>Symbol</th>
+<th>Pattern</th>
+<th>Side</th>
+<th>Historical Avg</th>
+<th>Forward Status</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>NVDA</td>
+<td>Tue 13:30-13:40</td>
+<td>long</td>
+<td>+5.015 bps</td>
+<td>Not started</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SPY</td>
+<td>Tue 13:30-13:40</td>
+<td>long</td>
+<td>+2.054 bps</td>
+<td>Not started</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AAPL</td>
+<td>Thu 10:10-10:20</td>
+<td>long</td>
+<td>+4.113 bps</td>
+<td>Not started</td>
+</tr>
+</tbody></table></div>
       <div class="footer-note">Generated from local Alpaca SIP data and static SVG charts. Raw API keys and raw CSV data are not included in this share package.</div>
     </section>
   </main>

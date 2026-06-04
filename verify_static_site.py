@@ -16,6 +16,10 @@ from pathlib import Path
 SHARE_DIR = Path("share")
 REQUIRED_PAGES = {
     "index.html",
+    "atlas.html",
+    "leaderboard.html",
+    "mag7.html",
+    "top100.html",
     "report.html",
     "tuesday-1340.html",
     "charts.html",

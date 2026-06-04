@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a colleague-friendly static website from the SPY research reports."""
+"""Build a colleague-friendly static website from the research reports."""
 
 from __future__ import annotations
 
@@ -11,18 +11,46 @@ from pathlib import Path
 
 REPORT = Path("reports/spy_2021_2026_expanded_pattern_report.md")
 DEEP_DIVE = Path("reports/spy_2021_2026_1340_tuesday_deep_dive.md")
+ATLAS_OVERVIEW = Path("reports/pattern_atlas_overview.md")
+ATLAS_LEADERBOARD = Path("reports/pattern_atlas_leaderboard.md")
+ATLAS_MAG7 = Path("reports/pattern_atlas_mag7.md")
+ATLAS_TOP100 = Path("reports/pattern_atlas_top100.md")
 CHARTS = Path("reports/charts")
 OUT = Path("share")
 
 NAV_LINKS = [
     ("index.html", "Overview"),
-    ("report.html", "Expanded Report"),
-    ("tuesday-1340.html", "Tuesday Deep Dive"),
+    ("atlas.html", "Market-Wide Atlas"),
+    ("leaderboard.html", "Leaderboard"),
+    ("mag7.html", "MAG7"),
+    ("top100.html", "Top 100"),
+    ("report.html", "SPY Deep Dive"),
+    ("tuesday-1340.html", "Tuesday 13:30"),
     ("charts.html", "Charts"),
     ("methodology.html", "Methodology"),
 ]
 
 CHART_LIBRARY = [
+    (
+        "Market Rhythm Map",
+        "charts/atlas_market_rhythm_map.svg",
+        "Market-wide view of average 10-minute behavior by weekday and time of day.",
+    ),
+    (
+        "MAG7 Rhythm Map",
+        "charts/atlas_mag7_rhythm_map.svg",
+        "The same rhythm-map concept isolated to the MAG7 names available in the current run.",
+    ),
+    (
+        "Pattern Survival Leaderboard",
+        "charts/atlas_survival_leaderboard.svg",
+        "Ranks research leads by repeatability, train/test agreement, and sample size.",
+    ),
+    (
+        "Tuesday 13:30-13:40 by Symbol",
+        "charts/atlas_tuesday_1340_by_symbol.svg",
+        "Shows whether the SPY Tuesday window appears in other symbols from the atlas run.",
+    ),
     (
         "Tuesday 13:30-13:40 Yearly Results",
         "charts/spy_2021_2026_tue_1340_yearly.svg",
@@ -461,49 +489,75 @@ def page_shell(body: str, title: str, active: str) -> str:
 
 
 def home_page() -> str:
-    return """
+    atlas_note = (
+        "<p>The next phase expands from one symbol into a Pattern Atlas: SPY, MAG7, and top ETF/index holdings. The key question is whether Tuesday 13:30-13:40 is market-wide behavior or just a SPY-specific clue.</p>"
+        if ATLAS_OVERVIEW.exists()
+        else "<p>The next phase is ready to run as a Pattern Atlas once sample symbols are fetched and analyzed.</p>"
+    )
+    hero_chart = (
+        "charts/atlas_market_rhythm_map.svg"
+        if (OUT / "charts/atlas_market_rhythm_map.svg").exists()
+        else "charts/spy_2021_2026_tue_1340_yearly.svg"
+    )
+    return f"""
 <div class="hero">
   <div>
-    <p class="kicker">SPY expanded timing research</p>
-    <h1>A plain-English map of the strongest intraday pattern since 2021.</h1>
-    <p>The research now reviews consolidated SPY minute data from 2021 through 2026. The broader 13:30 area still matters, but the strongest simple lead became Tuesday 13:30-13:40.</p>
+    <p class="kicker">Market-wide timing research</p>
+    <h1>A plain-English atlas of recurring intraday patterns.</h1>
+    {atlas_note}
   </div>
   <figure>
-    <img src="charts/spy_2021_2026_tue_1340_yearly.svg" alt="Tuesday 13:30 to 13:40 yearly chart">
+    <img src="{hero_chart}" alt="Market rhythm chart">
   </figure>
 </div>
 
 <div class="metric-grid">
   <div class="metric">
-    <div class="label">Best window</div>
-    <div class="value">Tue 13:30-13:40</div>
-    <div class="detail">New York time</div>
+    <div class="label">Atlas question</div>
+    <div class="value">Market-wide?</div>
+    <div class="detail">SPY clue or broader rhythm</div>
   </div>
   <div class="metric">
-    <div class="label">Win rate</div>
-    <div class="value">60.6%</div>
-    <div class="detail">282 Tuesdays tested</div>
+    <div class="label">Primary window</div>
+    <div class="value">10 minutes</div>
+    <div class="detail">Main discovery layer</div>
   </div>
   <div class="metric">
-    <div class="label">Average move</div>
-    <div class="value">+2.05 bps</div>
-    <div class="detail">Before spread and slippage</div>
+    <div class="label">Target pattern</div>
+    <div class="value">Tue 13:30</div>
+    <div class="detail">Ends 13:40 New York time</div>
   </div>
   <div class="metric">
-    <div class="label">Yearly read</div>
-    <div class="value">6 / 6</div>
-    <div class="detail">Positive years represented</div>
+    <div class="label">Project posture</div>
+    <div class="value">Static</div>
+    <div class="detail">No raw data in public site</div>
   </div>
 </div>
 
 <h2>Start Here</h2>
 <div class="link-grid">
+  <a class="link-card" href="atlas.html">
+    <strong>Market-Wide Atlas</strong>
+    <span>The main overview for the broader symbol universe.</span>
+  </a>
+  <a class="link-card" href="leaderboard.html">
+    <strong>Pattern Leaderboard</strong>
+    <span>Most consistent long/short windows and cross-symbol patterns.</span>
+  </a>
+  <a class="link-card" href="mag7.html">
+    <strong>MAG7 Patterns</strong>
+    <span>A focused look at the highest-impact mega-cap names.</span>
+  </a>
+  <a class="link-card" href="top100.html">
+    <strong>Top 100 Patterns</strong>
+    <span>Broad-market names outside the MAG7 lens.</span>
+  </a>
   <a class="link-card" href="tuesday-1340.html">
-    <strong>Tuesday Deep Dive</strong>
-    <span>The focused business case for the refined Tuesday 13:30-13:40 pattern.</span>
+    <strong>Tuesday Pattern</strong>
+    <span>The focused SPY case for Tuesday 13:30-13:40.</span>
   </a>
   <a class="link-card" href="report.html">
-    <strong>Expanded Report</strong>
+    <strong>SPY Deep Dive</strong>
     <span>The broader plain-English report covering the 2021-2026 rerun.</span>
   </a>
   <a class="link-card" href="charts.html">
@@ -517,14 +571,15 @@ def home_page() -> str:
 </div>
 
 <h2>Bottom Line</h2>
-<p>If we were going to study one time-based SPY pattern further after expanding the history, it should be the <strong>Tuesday 13:30-13:40 long window</strong>.</p>
-<p>The old 13:20-13:30 daily idea is not dead; it became a weaker part of a broader 13:30-area pattern. The refined Tuesday version is the cleaner multi-year lead.</p>
+<p>The next serious question is not just whether SPY had a pattern. It is whether the same clock-time behavior appears across other important stocks. That is what the Pattern Atlas is built to test.</p>
 """
 
 
 def charts_page() -> str:
     items = []
     for title, src, description in CHART_LIBRARY:
+        if not (OUT / src).exists():
+            continue
         items.append(
             f"""
 <section class="chart-item">
@@ -549,11 +604,17 @@ def methodology_page() -> str:
     return """
 <h1>Methodology and Notes</h1>
 
+<h2>Static-Only Project Posture</h2>
+<p>This site is intentionally static. Raw 1-minute bars stay local under <code>data/</code>, API keys stay in local environment files, and Cloudflare Pages serves only the generated <code>share/</code> folder.</p>
+
 <h2>What We Studied</h2>
-<p>The expanded analysis used SPY 1-minute bars from Alpaca SIP, covering 2021-01-04 through 2026-06-03 for regular-session observations. SIP is the consolidated feed, so it is the better source compared with the earlier IEX-only test pass.</p>
+<p>The SPY deep dive used 1-minute bars from Alpaca SIP, covering 2021-01-04 through 2026-06-03 for regular-session observations. The Pattern Atlas uses the same bar logic across every symbol with local data available.</p>
 
 <h2>How The Pattern Search Worked</h2>
-<p>The scripts converted 1-minute bars into clean 5-minute, 10-minute, 15-minute, and 30-minute windows. The main report focuses on 10-minute windows because they are less noisy than individual minutes but still specific enough to reveal time-of-day behavior.</p>
+<p>The scripts convert 1-minute bars into clean 10-minute windows for the main discovery layer. The atlas scores daily windows and weekday/time windows, then asks whether the same idea survives across train/test periods and years.</p>
+
+<h2>Pattern Survival Score</h2>
+<p>The score rewards multi-year consistency, train/test agreement, meaningful sample size, and out-of-sample strength. It is a ranking tool, not proof that a pattern will work live.</p>
 
 <h2>How To Read Basis Points</h2>
 <p>A basis point is 0.01%. A move of +2 bps is roughly +0.02%. That is small, which is why execution costs matter.</p>
@@ -572,8 +633,12 @@ def methodology_page() -> str:
 </ul>
 
 <h2>Recommended Next Step</h2>
-<p>Paper-track two rules side by side: the original daily 13:20-13:30 window and the refined Tuesday 13:30-13:40 window. Record gross result, estimated spread/slippage, and whether the day had a major market event.</p>
+<p>Paper-track the top three atlas patterns for 30-60 trading days. Record gross result, estimated spread/slippage, and whether the day had a major market event.</p>
 """
+
+
+def fallback_page(title: str, body: str) -> str:
+    return f"<h1>{html.escape(title)}</h1><p>{html.escape(body)}</p>"
 
 
 def copy_charts() -> None:
@@ -597,8 +662,39 @@ def main() -> int:
 
     write_page("index.html", "PV Stock Insights", home_page())
     write_page(
+        "atlas.html",
+        "Market-Wide Pattern Atlas",
+        markdown_to_html(ATLAS_OVERVIEW.read_text())
+        if ATLAS_OVERVIEW.exists()
+        else fallback_page(
+            "Market-Wide Pattern Atlas",
+            "Run make_pattern_atlas.py after fetching sample data to generate this page.",
+        ),
+    )
+    write_page(
+        "leaderboard.html",
+        "Pattern Leaderboard",
+        markdown_to_html(ATLAS_LEADERBOARD.read_text())
+        if ATLAS_LEADERBOARD.exists()
+        else fallback_page("Pattern Leaderboard", "No atlas leaderboard has been generated yet."),
+    )
+    write_page(
+        "mag7.html",
+        "MAG7 Patterns",
+        markdown_to_html(ATLAS_MAG7.read_text())
+        if ATLAS_MAG7.exists()
+        else fallback_page("MAG7 Patterns", "No MAG7 atlas run has been generated yet."),
+    )
+    write_page(
+        "top100.html",
+        "Top 100 Patterns",
+        markdown_to_html(ATLAS_TOP100.read_text())
+        if ATLAS_TOP100.exists()
+        else fallback_page("Top 100 Patterns", "No Top 100 atlas run has been generated yet."),
+    )
+    write_page(
         "report.html",
-        "SPY 12-Month Pattern Report",
+        "SPY Expanded Pattern Report",
         markdown_to_html(REPORT.read_text()),
     )
     if DEEP_DIVE.exists():
@@ -607,7 +703,7 @@ def main() -> int:
             "SPY Tuesday 13:30-13:40 Deep Dive",
             markdown_to_html(DEEP_DIVE.read_text()),
         )
-    write_page("charts.html", "SPY Pattern Chart Library", charts_page())
+    write_page("charts.html", "Pattern Atlas Chart Library", charts_page())
     write_page("methodology.html", "Methodology and Notes", methodology_page())
 
     (OUT / "README.md").write_text(

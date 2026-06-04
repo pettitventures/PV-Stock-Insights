@@ -3,4 +3,5 @@
 !.env.example
 __pycache__/
 data/*.csv
+data/**/*.csv
 .DS_Store

@@ -95,6 +95,36 @@ python3 sp500_intraday_trend_ai.py \
 
 Use `--feed iex` if your Alpaca plan does not include SIP historical data.
 
+## Market-Wide Pattern Atlas
+
+The next research phase asks whether the SPY Tuesday 13:30-13:40 window is a market-wide rhythm or a SPY-specific quirk.
+
+Build a timestamped research universe:
+
+```bash
+python3 build_research_universe.py
+```
+
+Validate the full pipeline on three symbols before spending API calls on the full universe:
+
+```bash
+python3 fetch_atlas_alpaca.py --symbols SPY,AAPL,NVDA --start 2021-01-01 --feed sip
+python3 make_pattern_atlas.py --symbols SPY,AAPL,NVDA
+python3 build_share_site.py
+python3 verify_static_site.py
+```
+
+After the sample checks out, fetch the full deduped universe:
+
+```bash
+python3 fetch_atlas_alpaca.py --start 2021-01-01 --feed sip
+python3 make_pattern_atlas.py
+python3 build_share_site.py
+python3 verify_static_site.py
+```
+
+Raw bars are written under `data/atlas/` and remain ignored by git. The commit-safe outputs are the universe file, markdown reports, SVG charts, and static HTML site.
+
 ## Shareable Static Site
 
 Build a colleague-friendly static HTML package:
@@ -109,6 +139,10 @@ The publishable folder is `share/`. It includes the HTML report and chart SVGs o
 Generated pages:
 
 - `share/index.html`: overview / starting point
+- `share/atlas.html`: market-wide pattern atlas
+- `share/leaderboard.html`: long/short and cross-symbol pattern leaderboards
+- `share/mag7.html`: MAG7 pattern section
+- `share/top100.html`: top-100 / broad-market section
 - `share/report.html`: expanded 2021-2026 pattern report
 - `share/tuesday-1340.html`: focused deep dive on the Tuesday 13:30-13:40 pattern
 - `share/charts.html`: chart library
